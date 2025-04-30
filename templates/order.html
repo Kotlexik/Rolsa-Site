@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1 class="title">Order</h1>
+<div class="columns">
+    <div class="column"></div>
+    <div class="column">
+        <img src="https://placehold.co/300x300?text={{product[1][:20]}}" alt="Product Image">
+        <h2>{{product[1]}}</h2>
+        <h3>£{{product[2]}}</h3>
+        <p>{{product[3]}}</p>
+    </div>
+    <div class="column"></div>
+    <form action="/order/{{product[0]}}" method="POST" class="column">
+        <div class="field">
+            <label for="address" class="label">Address for Installation/Delivery</label>
+            <input type="text" id="address" name="address" placeholder="Address" class="input" required>
+        </div>
+        <div class="field" class="label">
+            <label for="name" pattern="[A-Za-z]">Your Name</label>
+            <input type="text" id="name" name="name" placeholder="Your Name" class="input" required>
+        </div>
+        <div class="field">
+            <label for="date" class="label">Delivery and Installation Day</label>
+            <input type="date" id="date" name="date" class="input" required>
+        </div>
+        <input type="submit" value="Purchase" class="button">
+    </form>
+    <div class="column"></div>
+</div>
+
+{% endblock %}

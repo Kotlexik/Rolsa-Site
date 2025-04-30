@@ -1,0 +1,291 @@
+@import "https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css";
+
+* {
+    margin: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    color: black;
+}
+
+body{
+    padding: 0;
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.navbar{
+    background-color: rgb(111, 235, 111);
+}
+
+.logo{
+    width: 100%;
+}
+
+footer{
+    background-color: rgb(117, 117, 117);
+    color: white;
+    min-height: 10vh;
+    width: 100%;
+    text-align: center;
+    margin-top: auto;
+}
+
+.dropdown_items a{
+    text-decoration: none;
+    color: black;
+}
+
+#image-div{
+    background-image: url('/static/images/solar1.webp');
+    background-repeat: no-repeat;
+    background-position: center; 
+    background-size: 100vw 700px;
+    height: 700px;
+    position: relative;
+}
+
+#image-div-text{
+    position: relative;
+    padding: 75px 75px;
+}
+
+#links-div{
+    padding-top: 10px;
+    display: grid;
+    grid-template-areas: 
+    'solar solar ev ev manage manage';
+    gap: 10px;
+}
+
+.link-solar{
+    grid-area: solar;
+}
+
+.link-ev{
+    grid-area: ev;
+}
+
+.link-man{
+    grid-area: manage;
+}
+
+.link-images{
+    height: 20vw;
+    width: 100%;
+}
+
+.is-centered{
+    text-align: center;
+}
+
+.div-is-centered{
+    margin: auto;
+}
+
+.onethird{
+    width: 33vw;
+}
+
+.onefourth{
+    width: 25vh;
+}
+
+.title{
+    text-align: center;
+}
+
+#book_table{
+    text-align: center;
+    margin: auto;
+    border: 2px solid black;
+}
+
+#book_table table tr td.date{
+    margin: auto;
+}
+
+.product_list{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.product{
+    padding: 2%;
+    flex-grow: 1;
+    flex-basis: 16%;
+    display: flex;
+    overflow: hidden;
+}
+
+.prod_img{
+    max-width: 100%;
+}
+
+.form{
+    text-align: center;
+    border: 5px solid rgb(111, 235, 111);
+    width: fit-content;
+    margin: auto;
+    padding: 5px 5px 5px 5px;
+}
+
+.graph{
+    margin: auto;
+}
+
+.chart_data{
+    text-align: center;
+    margin: auto;
+}
+
+.chart_data tr td{
+    margin: auto;
+}
+
+.alert {
+    padding: 20px;
+    background-color: rgb(111, 235, 111);
+    color: black;
+    text-align: center;
+}
+
+.alert a{
+    background-color: white;
+    padding: 5px 5px 5px 5px;
+    border-radius: 5px;
+    margin-left: 5vw;
+}
+  
+.closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+  
+.closebtn:hover {
+    color: black;
+}
+
+.popup-overlay {
+
+    display: none;
+
+    position: fixed;
+
+    top: 0;
+
+    left: 0;
+
+    width: 100%;
+
+    height: 100%;
+
+    background: rgba(0, 0, 0, 0.5);
+
+}
+
+.popup {
+
+font-family: Arial, sans-serif;
+
+    position: absolute;
+
+    top: 50%;
+
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    background: #fff;
+
+    padding: 20px;
+
+    border-radius: 8px;
+
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+
+}
+
+.popup-content {
+
+    text-align: center;
+
+}
+
+.popup .close {
+
+    position: absolute;
+
+    top: 10px;
+
+    right: 10px;
+
+    font-size: 20px;
+
+    cursor: pointer;
+
+    color: #333;
+
+}
+
+.popup #emailInput {
+
+    width: 80%;
+
+    padding: 10px;
+
+    margin: 10px 0;
+
+    border: 1px solid #ddd;
+
+    border-radius: 4px;
+
+}
+
+.popup button {
+
+    background-color: #4caf50;
+
+    color: #fff;
+
+    padding: 10px 20px;
+
+    border: none;
+
+    border-radius: 4px;
+
+    cursor: pointer;
+
+    font-size: 16px;
+
+}
+
+.top-left{
+    margin-left: 10vw;
+    margin-top: 10vh;
+    width: 30vw;
+}
+
+@media only screen and (max-width: 600px) {
+    .top-left{
+        margin-left: 5vw;
+        margin-top: 5vh;
+        width: 90vw;
+    }
+    
+}
+
+.grid{
+    max-width: 90vw;
+}
+
+#products{
+    margin: auto;
+}

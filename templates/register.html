@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+<br>
+<h1 class="title is-centered">Register Account</h1>
+<br>
+<div>
+    <div class="is-centered">
+        <a href="/login" class="button">Login</a>
+        <a href="/register" class="button">Register</a>
+    </div>
+    <br>
+    <div class="is-centered">
+        <form action="/register" method="POST">
+            <input type="email" id="email" name="email" placeholder="Email Address" class="input onethird">
+            <br>
+            <br>
+            <input type="text" id="password" name="password" placeholder="Password" class="input onethird">
+            <br>
+            <br>
+            <input type="password" id="confirmpass" name="confirmpass" placeholder="Confirm Password" class="input onethird">
+            <br>
+            <br>
+            <label for="privacy">By ticking this box you accept our Privacy Policy</label>
+            <input type="checkbox" name="privacy" value="accepted" required>
+            <input type="submit" value="Register" class="button">
+        </form>
+    </div>
+</div>
+{% endblock %}

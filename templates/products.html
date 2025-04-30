@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1 class="title">Products and Services</h1>
+<br>
+<br>
+<div class="grid is-column-gap-8" id="products">
+    {% for i in products %}
+        <div class="cell">
+            <a href="/order/{{i[0]}}" class="prod_img"><img src="https://placehold.co/200x200?text={{i[1][:20]}}" alt="Product Image"></a>
+            <div class="prod_info is-centered">
+                <p>{{i[1]}}</p>
+                <a href="/order/{{i[0]}}" class="button">£{{i[2]}}</a>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

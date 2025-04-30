@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block content %}
+<form action="/confirm/{{ mail }}" method="POST">
+    <label for="pass_hash">Enter the code you've recieved in your email</label>
+    <input type="text" name="pass_hash" id="pass_hash" placeholder="Code">
+    <input type="submit">
+</form>
+{% endblock %}

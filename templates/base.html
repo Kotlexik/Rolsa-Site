@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/style.css">
+    <title></title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <script src="\static\scripts\dropdownmenu.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+          <a class="navbar-item" href="/"><img src="https://placehold.co/100x100?text=Logo" alt="Logo"></a>
+      
+          <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
+        </div>
+      
+        <div id="navbarBasicExample" class="navbar-menu">
+            {% if current_user.is_anonymous %}
+            {% else %}
+          <div class="navbar-start">
+            <a href="/bookings" class="navbar-item">Bookings</a>
+      
+            <div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-link">
+                More
+              </a>
+              <div class="navbar-dropdown">
+                <a href="/products" class="navbar-item">Products</a>
+                <a href="/energy-consumption" class="navbar-item">Energy Consumption</a>
+                <a href="carbon-footprint" class="navbar-item">Carbon Footprint</a>
+              </div>
+            {% endif %}
+            </div>
+          </div>
+      
+          <div class="navbar-end">
+            <div class="navbar-item">
+                {%if current_user.is_anonymous %}
+                <div class="buttons">
+                    <a href="/login" class="button is-light">Login</a>
+                </div>
+                {% else %}
+              <div class="buttons">
+                <a href="/logout" class="button is-light">Logout</a>
+              </div>
+                {% endif %}
+            </div>
+          </div>
+        </div>
+      </nav>
+      
+    {% block content %}     <!--page contents-->
+    {% endblock %}
+    <footer>
+        Rolsa Technologies ©
+    </footer>
+</body>
+</html>

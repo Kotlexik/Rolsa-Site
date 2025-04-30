@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1 class="title">Energy Usage</h1>
+<br>
+<div class="columns">
+    <div class="column">
+        {% if completed == True %}
+            <h2 class="is-centered">You have registered your readings for today.</h2>
+        {% else %}
+            <form action="/energy-consumption" method="POST" class="form">
+                <div class="field">
+                    <label for="KW" class="label">Electricity Consumption This Week (Smart Meter Reading)</label>
+                    <input type="number" name="energy0" id="energy0" step="0.01" min="0" class="input">
+                </div>
+                <div class="field">
+                    <input type="checkbox" name="smartmeter" id="smartmeter" onchange="no_meter()">
+                    <label for="smartmeter" class="label">I don't have a smart meter</label>
+                </div>
+                <div id="inputFields" style="display: none;">
+                    <button onclick="input_create()" type="button" class="button">New Appliance</button>
+                </div>
+                <br>
+                <input type="submit" value="Submit">
+            </form>
+        {% endif %}
+    </div>
+    <div class="column">
+        <h1 class="title">Your Past Readings</h1>
+        <div>
+            <canvas id="myChart" style="width:100%;max-width:600px" class="graph"></canvas>
+        </div>
+        <table class="table is-striped is-hoverable onethird div-is-centered">
+            <tr>
+                <th>Date</th>
+                <th>Usage</th>
+            </tr>
+            {% for i in x %}
+            <tr>
+                <td>{{i}}</td>
+                <td>{{y[loop.index0]}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+<br>
+<script src="static/scripts/energy.js"></script>
+<script>
+    const xValues = {{ x|tojson }};
+    const yValues = {{ y|tojson }};
+
+    new Chart("myChart", {
+    type: "line",
+    data: {
+        labels: xValues,
+        datasets: [{
+        fill: false,
+        lineTension: 0,
+        backgroundColor: "rgba(0,0,255,1.0)",
+        borderColor: "rgba(0,0,255,0.1)",
+        data: yValues
+        }]
+    },
+    options: {
+        legend: {display: false},
+        scales: {
+        yAxes: [{ticks: {min: 0, max:100}}],
+        }
+    }
+    });
+</script>
+
+{% endblock %}

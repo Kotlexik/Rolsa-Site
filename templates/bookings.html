@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block content %}
+<br>
+<h1 class="title">Your Bookings</h1>
+<div class="div-is-centered">
+    <table class="table is-striped is-hoverable">
+        {% if records %}
+            <tr>
+                <th>Date</th>
+                <th>Product Booked</th>
+                <th>Location</th>
+            </tr>
+            {% for i in records %}
+                <tr>
+                    <td>{{i[2]}}</td>
+                    <td>{{i[6]}}</td>
+                    <td>{{i[4]}}</td>
+                </tr>
+            {% endfor %}
+        {% else %}
+            <h2>No Bookings made</h2>
+        {% endif %}
+    </table>
+</div>
+<br>
+{% if completed == True %}
+{% else %}
+<div class="alert">
+    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+    You haven't checked your carbon footprint today. Don't forget to check each day to see progress towards a greener future.
+    <a href="/carbon-footprint">Carbon Footprint</a>
+</div>
+{% endif %}
+{% if completed2 == True %}
+{% else %}
+<div class="alert">
+    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+    You haven't recorded your energy usage today. Don't forget to record it to see how much you've used over time.
+    <a href="/energy-consumption">Energy Usage</a>
+</div>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+<br>
+<h1 class="title is-centered">Login</h1>
+<br>
+<div>
+    <div class="is-centered">
+        <a href="/login" class="button">Login</a>
+        <a href="/register" class="button">Register</a>
+    </div>
+    <br>
+    <div class="is-centered">
+        <form action="/login" method="POST">
+            <div class="field">
+            <input type="email" id="email" name="email" placeholder="email" class="input onethird">
+            </div>
+            <div class="field">
+            <input type="password" id="password" name="password" placeholder="Password" class="input onethird">
+            </div>
+            <label for="stay_logged">Stay Logged In?</label>
+            <input type="checkbox" id="stay_logged" name="stay_logged">
+            <input type="submit" value="Login" class="button">
+        </form>
+    </div>
+</div>
+{% endblock %}

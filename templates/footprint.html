@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1 class="title">Carbon Footprint Calculator</h1>
+<br>
+<div class="columns">
+    <div class="column">
+        {% if completed == True %}
+            <h2 class="is-centered">You have registered your readings for today.</h2>
+        {% else %}
+            <form action="/carbon-footprint" method="POST" class="form">
+                <div class="field">
+                    <label for="electric" class="label">Electricity:</label>
+                    <input type="number" name="electric" id="electric" class="input" required> <p>kW/h</p>
+                </div>
+                <div class="field">
+                    <label for="gas" class="label">Natural Gas:</label>
+                    <input type="number" name="gas" id="gas" class="input" required> <p>kW/h</p>
+                </div>
+                <div class="field">
+                    <label for="coal" class="label">Coal:</label>
+                    <input type="number" name="coal" id="coal" class="input" required> <p>Tonnes</p>
+                </div>
+                <div class="field">
+                    <label for="wood" class="label">Wood:</label>
+                    <input type="number" name="wood" id="wood" class="input" required> <p>Tonnes</p>
+                </div>
+                <p>If you do not utilise one of these fuel sources, please enter 0</p>
+                <input type="submit" value="Submit">
+            </form>
+        {% endif %}
+    </div>
+    <div class="column">
+        <h1 class="title">Your Past Readings</h1>
+        <div>
+            <canvas id="myChart" style="width:100%;max-width:600px" class="graph"></canvas>
+        </div>
+        <table class="table is-striped is-hoverable onethird div-is-centered">
+            <tr>
+                <th>Date</th>
+                <th>Usage (kw/H)</th>
+            </tr>
+            {% for i in x %}
+            <tr>
+                <td>{{i}}</td>
+                <td>{{y[loop.index0]}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+<script>
+    const xValues = {{ x|tojson }};
+    const yValues = {{ y|tojson }};
+
+    new Chart("myChart", {
+    type: "line",
+    data: {
+        labels: xValues,
+        datasets: [{
+        fill: false,
+        lineTension: 0,
+        backgroundColor: "rgba(0,0,255,1.0)",
+        borderColor: "rgba(0,0,255,0.1)",
+        data: yValues
+        }]
+    },
+    options: {
+        legend: {display: false},
+        scales: {
+        yAxes: [{ticks: {min: 0, max:100}}],
+        }
+    }
+    });
+</script>
+{% endblock %}
